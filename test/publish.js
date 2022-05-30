@@ -7,6 +7,11 @@ const report = fs.readFileSync(path.join(__dirname, "../output/report.md"));
 const success = process.argv[2];
 const version = process.argv[3] || process.env.GIT_COMMIT;
 
+// console.log("GIT_COMMIT", process.argv);
+// console.log("GIT_COMMIT3", process.env);
+// console.log("PACT_BROKER_TOKEN", process.env.PACT_BROKER_TOKEN);
+// console.log("PACT_BROKER_BASE_URL", process.env.PACT_BROKER_BASE_URL);
+
 const result = {
   content: Buffer.from(oas, "utf-8").toString("base64"),
   contractType: "oas",
@@ -21,7 +26,7 @@ const result = {
 
 console.log("Publishing OAS + results to Pactflow", result);
 
-// Upload the contract + results together
+//Upload the contract + results together
 axios({
   method: "PUT",
   headers: {
@@ -30,7 +35,7 @@ axios({
   },
   url:
     process.env.PACT_BROKER_BASE_URL +
-    `/contracts/provider/pactflow-example-bi-directional-provider-dredd/version/${version}`,
+    `/contracts/provider/pactflow-example-bi-directional-provider-dredd/version/1.0.0`,
   data: result,
 })
   .then(() => {
