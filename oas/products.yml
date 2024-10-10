@@ -20,7 +20,6 @@ paths:
               application/json:
                 value:
                   id: "1234"
-                  type: "food"
                   price: 42
       responses:
         "200":
@@ -34,7 +33,6 @@ paths:
                 application/json:
                   value:
                     id: "1234"
-                    type: "food"
                     price: 42
     get:
       summary: List all products
@@ -53,7 +51,6 @@ paths:
                 application/json:
                   value:
                     - id: "1234"
-                      type: "food"
                       price: 42
                       # name: "pizza"
                       # version: "1.0.0"
@@ -85,7 +82,6 @@ paths:
                 application/json:
                   value:
                     id: "1234"
-                    type: "food"
                     price: 42
                     # name: "pizza"
                     # version: "1.0.0"
@@ -107,8 +103,6 @@ components:
       additionalProperties: false # WARNING! without this, a consumer can add stuff that doesn't exist! See also https://bitbucket.org/atlassian/swagger-mock-validator/issues/84/test-incorrectly-passes-when-mock-expects
       properties:
         id:
-          type: string
-        type:
           type: string
         name:
           type: string
